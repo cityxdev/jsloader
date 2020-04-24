@@ -54,24 +54,37 @@ $(function() {
             return loader.length===1?loader:undefined;
         };
 
+        /**
+         * Set the color of the loader
+         * @param newColor A css color
+         */
         _jsloader.setColor = function(newColor){
             if(newColor)
                 color=newColor;
         };
 
-        _jsloader.showLoader = function (immediatly,container) {
+        /**
+         * Show a loader in a container
+         * @param immediately Should it show immediately? default: true
+         * @param container A container where to show the loader. Can be a jQuery selector or a jQuery DOM element. Default $('body')
+         */
+        _jsloader.showLoader = function (immediately,container) {
             let loader = _getLoaderElement(container,true);
-            immediatly = immediatly===undefined||immediatly===null ? true : immediatly;
-            if(!immediatly) {
+            immediately = immediately===undefined||immediately===null ? true : immediately;
+            if(!immediately) {
                 if (!loader.data('timeoutId'))
                     loader.data('timeoutId', []);
                 let timeoutId = setTimeout(function () {
                     loader.show();
-                }, 300);
+                }, 500);
                 loader.data('timeoutId').push(timeoutId);
             } else loader.show();
         };
 
+        /**
+         * Hide a loader in a container
+         * @param container A container where to show the loader. Can be a jQuery selector or a jQuery DOM element. Default $('body')
+         */
         _jsloader.hideLoader = function (container) {
             let loader = _getLoaderElement(container,false);
             if(loader) {
