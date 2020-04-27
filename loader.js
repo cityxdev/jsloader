@@ -43,7 +43,7 @@ $(function() {
                 innerLoader.css('top', 'calc(50% - 60px)');
                 innerLoader.css('left', 'calc(50% - 60px)');
                 innerLoader.css('position', 'absolute');
-                innerLoader.css('border', '16px solid #FFFFFF');
+                innerLoader.css('border', '16px solid #DDDDDD');
                 innerLoader.css('border-top', '16px solid '+color);
                 innerLoader.css('border-radius', '50%');
                 innerLoader.css('width', '120px');
@@ -65,12 +65,12 @@ $(function() {
 
         /**
          * Show a loader in a container
-         * @param immediately Should it show immediately? default: true
+         * @param immediately Should it show immediately? default: false
          * @param container A container where to show the loader. Can be a jQuery selector or a jQuery DOM element. Default $('body')
          */
         _jsloader.showLoader = function (immediately,container) {
             let loader = _getLoaderElement(container,true);
-            immediately = immediately===undefined||immediately===null ? true : immediately;
+            immediately = immediately===undefined||immediately===null ? false : immediately;
             if(!immediately) {
                 if (!loader.data('timeoutId'))
                     loader.data('timeoutId', []);
